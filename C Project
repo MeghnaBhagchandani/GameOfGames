@@ -1,0 +1,276 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int generateRandomNumber(int n){
+    srand(time(NULL));  //srand takes seed as an input and is defined inside stdlib.h.
+    return rand() % n;
+}
+int ch;
+int main(){
+    int choice;
+    printf("\n\t\t\t\t\tWEL-COME\n\n");
+    printf("\t---------------------------------------------------------------------\n");
+   do{
+    printf("\n\t\tHere's the list of Games: \n\n");
+    printf("\t\tEnter 1, if you want to play Rock, Paper and Scissor Game.\n");
+    printf("\t\tEnter 2, if you want to play Quiz Game on C Programming.\n");
+    printf("\t\tEnter 3, if you want to play Number Guessing Game.\n");
+    printf("\t----------------------------------------------------------------------\n\n");
+    printf("Enter Your Choice: ");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1: {
+            /*Concept of Rock, Paper and Scissors Game
+            In this game player 1 has 3 choices either he/she choose rock, paper and scissor.
+            and player 2 also have these 3 choices.
+            if rock vs scissors - rock wins
+            paper vs scissors - scissor wins
+            paper vs rock - paper wins*/
+            printf("\n\n\tWelcome to the Rock, Paper and Scissor Game!\n");
+            int playerScore = 0, computerScore = 0, temp;
+            char playerChar, compChar;
+            for(int i = 0; i< 3; i++){
+                printf("\nPlayer 1's Turn!\n");
+                printf("Enter 1 for Rock, 2 for Paper and 3 for Scissors: ");
+                scanf("%d", &temp);
+                if(temp==1){
+                    playerChar = 'r';
+                }
+                else if(temp==2){
+                    playerChar = 'p';
+                }
+                else{
+                    playerChar = 's';
+                }
+               printf("Player 1 chose: %c", playerChar);
+               printf("\n\nComputer's Turn!\n");
+               temp = generateRandomNumber(3) + 1;
+               if(temp==1){
+                    compChar = 'r';
+                }
+                else if(temp==2){
+                    compChar = 'p';
+                }
+                else{
+                    compChar = 's';
+                }
+                printf("Computer chose %c\n", compChar);
+                if(playerChar=='r' && compChar=='s'){
+                    playerScore+=1;
+                    printf("\nPlayer win this chance!\n");
+                }
+                else if(playerChar=='r' && compChar=='p'){
+                    computerScore+=1;
+                    printf("\nComputer win this chance!\n");
+                }
+                else if(playerChar=='p' && compChar=='r'){
+                    playerScore+=1;
+                    printf("\nPlayer win this chance!\n");
+                }
+                else if(playerChar=='p' && compChar=='s'){
+                    computerScore+=1;
+                    printf("\nComputer win this chance!\n");
+                }
+                else if(playerChar=='s' && compChar=='r'){
+                    computerScore+=1;
+                    printf("\nComputer win this chance!\n");
+                }
+                else if (playerChar=='s' && compChar=='p'){
+                    playerScore+=1;
+                    printf("\nPlayer win this chance!\n");
+                }
+                else if (playerChar=='r' && compChar=='r'){
+                    playerScore+=1;
+                    computerScore+=1;
+                    printf("\nYou both win this chance!\n");
+                }
+                else if (playerChar=='s' && compChar=='s'){
+                    playerScore+=1;
+                    computerScore+=1;
+                    printf("\nYou both win this chance!\n");
+                }
+                else {
+                    playerScore+=1;
+                    computerScore+=1;
+                    printf("\nYou both win this chance!\n");
+                }
+            }
+            printf("\nPlayer's Score: %d",playerScore);
+            printf("\nComputer's Score: %d",computerScore);
+            if(playerScore>computerScore){
+                printf("\n\nCongrats! You win...\n");
+            }
+            else if(playerScore<computerScore){
+                printf("\n\nSorry! Computer wins...\n");
+            }
+            else{
+                printf("\n\nIt's a tie!\n");
+            }
+        break;
+        }
+        case 2: {
+            printf("\n\t\tWelcome to the Quiz Game!");
+            int answer;
+            int score = 0;
+            printf("\n\nRules of the game: \n");
+            printf("1. There are total 10 questions and all questions are compulsory.\n");
+            printf("2. For every correct answer you will get 3 marks.\n");
+            printf("3. For every incorrect answer you will get -1.\n");
+            printf("\nQ-1 Who's is the father of C Language?\n");
+            printf("1. Steve Jobs  2. James Gosling  3. Dennis Ritchie  4. Rasmus Lerdorf\n");
+            scanf("%d",&answer);
+            if(answer==3){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-2 All keywords in C ________\n");
+            printf("1. LowerCase letters  2. UpperCase letters  3. CamelCase letters  4. None of the mentioned\n");
+            scanf("%d",&answer);
+            if(answer==1){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-3 C programs are converted into machine language with the help of?\n");
+            printf("1. An editor  2. A compiler  3. An operating system  4. None of the mentioned\n");
+            scanf("%d",&answer);
+            if(answer==2){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-4 A c variable cannot start with?\n");
+            printf("1. A number  2. A special symbol other than underscore  3. Both 1 and 2  4. An alphabet\n");
+            scanf("%d",&answer);
+            if(answer==3){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-5 Which of the following is not a correct variable?\n");
+            printf("1. char  2. real  3. int  4. double\n");
+            scanf("%d",&answer);
+            if(answer==2){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-6 Which one of the following is a loop construct that will always be executed once?\n");
+            printf("1. for loop  2. while loop  3. do-while loop  4. switch-case\n");
+            scanf("%d",&answer);
+            if(answer==3){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-7 The prototype of a function can be used to?\n");
+            printf("1. Define a function  2. Declare a function  3. Erase a function  4. None of the mentioned\n");
+            scanf("%d",&answer);
+            if(answer==2){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-8 C is which type of programming language?\n");
+            printf("1. Object-Oriented  2. Bit-level  3. Functional  4. Procedural\n");
+            scanf("%d",&answer);
+            if(answer==4){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-9 How many number of keywords are present in c language?\n");
+            printf("1. 32  2. 34  3. 62  4. 64\n");
+            scanf("%d",&answer);
+            if(answer==1){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nQ-10 Each statement in a C program should end with?\n");
+            printf("1. Colon(:)  2. Comma(,)  3. Question Mark(?)  4. Semicolon(;)\n");
+            scanf("%d",&answer);
+            if(answer==4){
+                printf("Answer is correct!");
+                score+=3;
+            }
+            else{
+                printf("Answer is incorrect!");
+                score-=1;
+            }
+            printf("\n\nYour total score is: %d",score);
+            if(score<=30 && score>25){
+                printf("\nYou have a great knowledge of c language!\n");
+            }
+            else if(score<=25 && score>20){
+                printf("\nYou have a good knowledge of c language!\n");
+            }
+            else if(score<=20 && score>15){
+                printf("\nKeep it up by participating in more quizes!\n");
+            }
+            else{
+                printf("\nHard Work!\n");
+            }
+        break;
+        }
+        case 3: {
+            printf("\n\t\tWelcome to the Number Guessing Game!\n\n");
+            int userNum, numGuesses=1, computerNum;
+            computerNum = generateRandomNumber(21);
+            do{
+                printf("Guess the number between 1 to 20\n");
+                scanf("%d",&userNum);
+                if(userNum>computerNum){
+                    printf("\nPlease enter a lower number!\n\n");
+                }
+                else if(userNum<computerNum){
+                    printf("\nPlease enter a higher number!\n\n");
+                }
+                else{
+                    printf("\nCongratulations! You guessed it right\n\n");
+                }
+                numGuesses++;
+            }while(userNum!=computerNum);
+        printf("You guessed it in %d attempts\n",numGuesses-1);
+        break;
+        }
+        default: {
+        printf("Enter a Valid Choice!");
+        break;
+        }
+     }
+     printf("\nDo you want to play more?");
+     printf("\nEnter 1 for YES and 0 for NO.\n");
+     scanf("%d",&ch);
+   }while(ch!=0);
+return 0;
+}
